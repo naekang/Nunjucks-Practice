@@ -4,7 +4,7 @@
   "description": "node online",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx nodemon -e js,html server.js"
   },
   "author": "jinhoKim",
   "license": "ISC",

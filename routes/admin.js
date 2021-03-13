@@ -1,31 +1,28 @@
 const express = require("express");
 const router = express.Router();
-const nunjucks = require("nunjucks");
 
-function testMiddleware(req, res, next) {
+function testMiddleWare(req, res, next) {
     console.log("첫번째 미들웨어");
     next();
 }
 
-function testMiddleware2(req, res, next) {
+function testMiddleWare2(req, res, next) {
     console.log("두번째 미들웨어");
     next();
 }
 
-// localhost:3000/admin
-router.get("/", testMiddleware, testMiddleware2, (req, res) => {
-    res.send("admin 이후 url");
+router.get("/", testMiddleWare, testMiddleWare2, (req, res) => {
+    res.send("admin app");
 });
 
-// localhost:3000/admin/products
 router.get("/products", (_, res) => {
-    res.render("admin/products.html", {
-        message: "hellodcda",
-        online: "express",
-    });
+    res.render(
+        "admin/products.html",
+        { message: "hello" } // message 란 변수를 템플릿으로 내보낸다.
+    );
 });
 
-router.get("/products/write", (req, res) => {
+router.get("/products/write", (_, res) => {
     res.render("admin/write.html");
 });
 
