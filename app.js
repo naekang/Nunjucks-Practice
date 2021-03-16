@@ -3,6 +3,7 @@ const nunjucks = require("nunjucks");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 
+// db 관련
 const db = require("./models");
 
 class App {
@@ -40,10 +41,10 @@ class App {
             .authenticate()
             .then(() => {
                 console.log("Connection has been established successfully.");
+                // return db.sequelize.sync();
             })
             .then(() => {
                 console.log("DB Sync complete.");
-                // return db.sequelize.sync();
             })
             .catch((err) => {
                 console.error("Unable to connect to the database:", err);
